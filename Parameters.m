@@ -1,11 +1,13 @@
+clear
+
 % Define motor parameters
 L_q = 96.5E-6; %H
 L_d = L_q; %H
 R_s= 7.06E-3; % Ohm
-Flux = 0.1827;  %Wb
+Flux = 0.03737;  %Wb
 p = 4;
 Kp = 143;
-Ki = 1100;
+Ki = 1300;
 Ki_s = 1;
 Kp_s = 1;
 
@@ -19,7 +21,7 @@ Kp_s = 1;
 %% Bode plot of Pi(s)
 
 s=tf('s');
-P = 1/(L_q*s + R)
-sisotool(P)
+%P = 1/(L_q*s + R_s);
+%sisotool(P)
 
     
