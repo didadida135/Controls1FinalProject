@@ -8,9 +8,9 @@ Flux = 0.03737;  %Wb
 p = 4;
 
 %Calculating Gains
-fn=R_s/(2*pi*L_q);
-Kpq=(L_q*2*pi*fn)/10;
-Kpd=(L_d*2*pi*fn)/10;
+fsw=2000;
+Kpq=(L_q*2*pi*fsw)/10;
+Kpd=(L_d*2*pi*fsw)/10;
 Kiq=Kpd*(R_s/L_q);
 Kid=Kpd*(R_s/L_d);
 
