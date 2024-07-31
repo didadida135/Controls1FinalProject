@@ -10,6 +10,7 @@ Flux = 0.192;  %Wb
 p = 4;
 vdc=560;
 Vdc=100;
+Kt=Flux*p;
 
 %Calculating Gains
 fsw=5000;
