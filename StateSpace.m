@@ -27,20 +27,26 @@ Ki_s = 1;
 Kp_s = 1;
 
 
+%Temp Parameters
+Td=Ld/Rs;
+Tq=Lq/Rs;
+a=1/Ld;
+b=1/Lq;
+c=1/Td;
+d=1/Tq;
+
+
 % Define linearized state-space matrices
-A = [-Rs/Ld, Lq/Ld;
-    -Ld/Lq, -Rs/Lq]; % *K matrix
+A = [-c; -d; 0]; % *K matrix
     
-B = [1/Ld, 0;
-     0, 1/Lq];
+B = [a;0;0] + [0;b;0]+ [a/b; -(b/a) - b*Flux ; 1]
 
 % 
-C = eye(2); % Output all states
-D = zeros(2,2); % No direct feedthrough from inputs to outputs
+C = eye(3); % Output all states
+D = zeros(3); % No direct feedthrough from inputs to outputs
 
 % E how do we add this one?
-E = [0;      % *wm
-    Flux/Lq]; 
+%E = [0;Flux/Lq]; 
 
 %Controller Matrix
 wmM= [0,1;
