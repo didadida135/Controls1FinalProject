@@ -1,6 +1,8 @@
 clear
 
 % Define motor parameters
+J=0.0027;
+Ff=0.0004924;
 L_q = 0.000795; %H
 L_d = L_q; %H
 R_s= 0.05; % Ohm
