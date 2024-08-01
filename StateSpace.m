@@ -27,8 +27,8 @@ Ksd=Kid;
 
 Kp = (Lq*2*pi*fsw)/10;
 Ki = (Ld*2*pi*fsw)/10;
-Ki_s = 1;
-Kp_s = 1;
+Kdu = 1; %Find poles and gain values for feedback values
+Kqu = 1; %Find poles and gain values for feedback values
 
 
 %Temp Parameters
@@ -44,7 +44,10 @@ d=1/Tq;
 A = [0, -1; 0, -Rs/Lq]; % *K matrix
 B = [0;1/Lq]; % + reference input
 C = [0 1]; % Output iq states
+%Also double check C (should be outputting 
 D = [1]; % iq ref feedthrough
+%Double check D matrix, right now its outputting total Iq error due to
+%matrix dimension constraints
 
 % E how do we add this one?
 %E = [0;Flux/Lq]; 
