@@ -12,6 +12,10 @@ vdc=560;
 Vdc=100;
 Kt=Flux*p;
 
+%Matrix Gains
+Kiqe=[0,-1;0,0];
+Kiqm=[0,0;0,-Rs/Lq];
+
 %Calculating Gains
 fsw=5000;
 Kpq=(Lq*2*pi*fsw)/10;
@@ -37,13 +41,10 @@ d=1/Tq;
 
 
 % Define linearized state-space matrices
-A = [-c; -d; 0]; % *K matrix
-    
-B = [a;0;0] + [0;b;0]+ [a/b; -(b/a) - b*Flux ; 1]
-
-% 
-C = eye(3); % Output all states
-D = zeros(3); % No direct feedthrough from inputs to outputs
+A = [0, -1; 0, -Rs/Lq]; % *K matrix
+B = [0;1/Lq]; % + reference input
+C = [0 1]; % Output iq states
+D = [1]; % iq ref feedthrough
 
 % E how do we add this one?
 %E = [0;Flux/Lq]; 
