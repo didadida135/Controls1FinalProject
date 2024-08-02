@@ -60,13 +60,20 @@ D = [1]; % iq ref feedthrough
 pq1 = -1.06194;
 pq2 = -1193.90;
 pq = [pq1 pq2];
-Kq=place(A,B,pq);
+%Kq=place(A,B,pq); %using place method
+Kq = [0.0795 1];
 Kd=Kq;
 
 %Obs = ------
+Ao=ones(2);
+Bo=ones(2,1);
+Co=ones(1,2);
+Do=ones(1);
+
 
 % Create state-space model
 sys = ss(A, B, C, D);
+sys = ss(Ao, Bo, Co, Do);
 %step(sys);
 
 % Display state-space matrices
