@@ -1,5 +1,7 @@
 clear
 
+syms s
+
 % Define motor parameters
 J=0.0027;
 Ff=0.0004924;
@@ -40,7 +42,7 @@ c=1/Td;
 d=1/Tq;
 
 
-% Define linearized state-space matrices
+%% Define linearized state-space matrices
 A = [0, -1; 0, -Rs/Lq]; % *K matrix
 B = [0;1/Lq]; % + reference input
 C = [0 1]; % Output iq states
@@ -52,12 +54,14 @@ D = [1]; % iq ref feedthrough
 % E how do we add this one?
 %E = [0;Flux/Lq]; 
 
-%Controller Matrix
-wmM= [0,1;
-    1,0]; % *w_m
-
-iM=ones(3);
-
+%%Controller Matrix
+%s = tf("s");
+%see textbook page 188 (dead beat feedback)
+pq1 = -1.06194;
+pq2 = -1193.90;
+pq = [pq1 pq2];
+Kq=place(A,B,pq);
+Kd=Kq;
 
 %Obs = ------
 
