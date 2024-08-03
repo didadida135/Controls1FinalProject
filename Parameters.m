@@ -13,7 +13,7 @@ Vdc=100;
 Kt=Flux*p;
 
 %Calculating Gains
-fsw=5000;
+fsw=5000; %switching frequency
 Kpq=(L_q*2*pi*fsw)/10;
 Kpd=(L_d*2*pi*fsw)/10;
 Kiq=Kpd*(R_s/L_q);
