@@ -57,18 +57,24 @@ D = [1]; % iq ref feedthrough
 %%Controller Matrix
 %s = tf("s");
 %see textbook page 188 (dead beat feedback)
-pq1 = -1.06194;
-pq2 = -1193.90;
-pq = [pq1 pq2];
-%Kq=place(A,B,pq); %using place method
-Kq = [0.0795 1];
+qA=A^2 + 1800*A + 1000000*eye(2);
+P= [B, A*B];
+Pc1 = inv(P);
+Kq=[0 1]*Pc1*qA
 Kd=Kq;
 
 %Obs = ------
-Ao=ones(2);
-Bo=ones(2,1);
-Co=ones(1,2);
-Do=ones(1);
+Po = [C; C*A];
+
+%Po1 = inv(Po);
+%L = Po1*qA*[0;1];
+
+
+Ao=A;
+Bo=B;
+Co=C;
+Do=D;
+L=[1;1];
 
 
 % Create state-space model
